@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  font-family: 'Ubuntu';
+  background: rgb(250, 250, 250);
+  height: 100%;
+  width: 100%;
+}
