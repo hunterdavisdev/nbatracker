@@ -9,12 +9,13 @@
     "client": "npm start --prefix client",
     "server": "nodemon server",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "author": "Hunter Davis",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1"
   },
   "devDependencies": {
