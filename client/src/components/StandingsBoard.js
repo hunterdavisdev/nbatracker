@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Standings = () => {
   const [apiData, setBody] = useState({ standings: [] });
@@ -25,14 +26,9 @@ const Standings = () => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetch('/nba/standings');
-      const body = await result.json();
-      if (body) {
-        setBody(body);
-      }
-    };
-    fetchData();
+    axios.get('/api/standings').then(response => {
+      setBody(response.data);
+    });
   }, []);
 
   return (

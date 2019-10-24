@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import StandingsBoard from '../components/StandingsBoard';
 import Leaderboard from '../components/Leaderboard';
 import messages from '../static/motd';
+import axios from 'axios';
 
 const LeagueContainer = () => {
   const [motd, setMotd] = useState(messages[Math.floor(Math.random() * messages.length)]);
@@ -9,15 +10,10 @@ const LeagueContainer = () => {
   const [players, setPlayers] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetch('/nba/leaderboard');
-      const body = await result.json();
-      if (body) {
-        setLoser(body[body.length - 1].name);
-        setPlayers(body);
-      }
-    };
-    fetchData();
+    axios.get('/api/leaderboard').then(response => {
+      setLoser(response.data[response.data.length - 1].name);
+      setPlayers(response.data);
+    });
   }, []);
 
   const wrapperStyle = {
