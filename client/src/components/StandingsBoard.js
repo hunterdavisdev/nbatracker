@@ -36,45 +36,43 @@ const Standings = () => {
   }, []);
 
   return (
-    apiData && (
-      <div style={standingsStyle}>
-        <h1
-          style={{
-            paddingBottom: '20px',
-            fontWeight: '300'
-          }}
-        >
-          Standings
-        </h1>
-        <table style={tableStyle}>
-          <thead>
-            <tr>
-              <th>Team</th>
-              <th>Wins</th>
-              <th>Losses</th>
-              <th>Win Ratio</th>
-            </tr>
-          </thead>
-          <tbody>
-            {apiData.standings.map(team => {
-              return (
-                <tr>
-                  <td>
-                    <div style={{ display: 'inline' }}>
-                      <img src={team.icon} style={imageStyle} alt='' />
-                      <p>{team.name}</p>
-                    </div>
-                  </td>
-                  <td> {team.wins} </td>
-                  <td> {team.losses} </td>
-                  <td> {((team.wins + 1) / (team.losses + 1)).toFixed(2)} </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    )
+    <div style={standingsStyle}>
+      <h1
+        style={{
+          paddingBottom: '20px',
+          fontWeight: '300'
+        }}
+      >
+        Standings
+      </h1>
+      <table style={tableStyle}>
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>Win Ratio</th>
+          </tr>
+        </thead>
+        <tbody>
+          {apiData.standings.map(team => {
+            return (
+              <tr>
+                <td>
+                  <div style={{ display: 'inline' }}>
+                    <img src={team.icon} style={imageStyle} alt='' />
+                    <p>{team.name}</p>
+                  </div>
+                </td>
+                <td> {team.wins} </td>
+                <td> {team.losses} </td>
+                <td> {((team.wins + 1) / (team.losses + 1)).toFixed(2)} </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
